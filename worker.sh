@@ -10,7 +10,7 @@ apt-get update
 apt-get install -y kubelet kubeadm kubectl kubernetes-cni
 curl -sSL https://get.docker.com/ | sh
 systemctl start docker
-echo '[Finished] Installing kubelet kubeadm kubectl kubernetes-cni docker'
+echo '[Finished] Installing kubelet kubeadm kubectl kubernetes-cni docker' > /home/ubuntu/worker.log
 
 systemctl stop docker
 mkdir /mnt/docker
@@ -27,12 +27,12 @@ cat <<EOF > /etc/docker/daemon.json
 EOF
 systemctl start docker
 systemctl enable docker
-echo '[Finished] docker configure'
+echo '[Finished] docker configure' > /home/ubuntu/worker.log
 
 # Point kubelet at big ephemeral drive
 mkdir /mnt/kubelet
 echo 'KUBELET_EXTRA_ARGS="--root-dir=/mnt/kubelet --cloud-provider=aws"' > /etc/default/kubelet
-echo '[Finished] kubelet configure'
+echo '[Finished] kubelet configure' > /home/ubuntu/worker.log
 
 # ----------------- from here same with worker.sh
 
@@ -40,5 +40,5 @@ echo '[Finished] kubelet configure'
 echo "net.bridge.bridge-nf-call-iptables = 1" > /etc/sysctl.d/60-flannel.conf
 service procps start
 
-echo '[Wait] kubeadm join until kubeadm cluster have been created.'
+echo '[Wait] kubeadm join until kubeadm cluster have been created.' > /home/ubuntu/worker.log
 for i in {1..50}; do sudo kubeadm join --token=${k8stoken} --discovery-token-unsafe-skip-ca-verification --node-name=$(hostname -f) ${masterIP}:6443 && break || sleep 15; done
