@@ -14,6 +14,14 @@ curl -sSL https://get.docker.com/ | sh
 systemctl start docker
 echo '[Finished] Installing kubelet kubeadm kubectl kubernetes-cni docker' > /home/ubuntu/master.log
 
+# Install etcdctl for the version of etcd we're running
+ETCD_VERSION=$(kubeadm config images list | grep etcd | cut -d':' -f2)
+wget "https://github.com/coreos/etcd/releases/download/v$${ETCD_VERSION}/etcd-v$${ETCD_VERSION}-linux-amd64.tar.gz"
+tar xvf "etcd-v$${ETCD_VERSION}-linux-amd64.tar.gz"
+mv "etcd-v$${ETCD_VERSION}-linux-amd64/etcdctl" /usr/local/bin/
+rm -rf etcd*
+echo '[Finished] Installing etcdctl' > /home/ubuntu/master.log
+
 systemctl stop docker
 mkdir /mnt/docker
 chmod 711 /mnt/docker

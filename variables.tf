@@ -8,11 +8,6 @@ locals {
 # Adjustable variables
 #############################
 
-variable number_of_controller{
-  description = "The number of controller, only acts as controller"
-  default = 0
-}
-
 variable number_of_etcd{
   description = "The number of etcd, only acts as etcd"
   default = 0
@@ -116,13 +111,17 @@ variable worker_instance_type {
   default = "t2.medium"
 }
 
-# for Install KubeAdm Master / Worker
+# for Install KubeAdm Master / Worker / etcd
 variable "master-userdata" {
     default = "master.sh"
 }
 
 variable "worker-userdata" {
     default = "worker.sh"
+}
+
+variable "etcd-userdata" {
+    default = "etcd.sh"
 }
 
 variable "k8stoken" {}

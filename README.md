@@ -74,6 +74,7 @@ $ terraform destroy
 ```bash
 $ tail -f /home/ubuntu/master.log # in master node
 $ tail -f /home/ubuntu/worker.log # in worker node
+$ tail -f /home/ubuntu/etcd.log # in etcd node
 ```
 
 ### 3. Set [variables.tf](https://github.com/graykode/aws-kubeadm-terraform/blob/master/variables.tf)
@@ -96,14 +97,11 @@ variable worker_instance_type {
 2. Set Number of EC2 Node 
 
 ```javascript
-variable number_of_controller{
-  description = "The number of controller, only acts as controller"
-  default = 0
-}
 variable number_of_etcd{
   description = "The number of etcd, only acts as etcd"
   default = 0
 }
+
 variable number_of_worker{
   description = "The number of worker nodes"
   default = 1
@@ -116,6 +114,8 @@ variable number_of_worker{
 
 If you meet `provider.aws: error validating provider credentials` Error, Please check that your IAM key is activate.
 
+#### ToDo
+- Fixing etcd controller.
 
 
 ### Author

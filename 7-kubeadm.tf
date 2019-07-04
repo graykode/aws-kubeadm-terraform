@@ -15,6 +15,15 @@ data "template_file" "worker-userdata" {
     }
 }
 
+data "template_file" "etcd-userdata" {
+    template = "${file("${var.etcd-userdata}")}"
+
+    vars {
+        k8stoken = "${var.k8stoken}"
+        masterIP = "${aws_instance.controller_etcd.private_ip}"
+    }
+}
+
 ############
 ## Outputs
 ############
