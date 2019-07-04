@@ -1,5 +1,5 @@
 #!/bin/bash -ve
-tourch /home/ubuntu/master.log
+touch /home/ubuntu/master.log
 
 curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
 touch /etc/apt/sources.list.d/kubernetes.list
