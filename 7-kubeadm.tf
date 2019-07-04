@@ -20,5 +20,5 @@ data "template_file" "worker-userdata" {
 ############
 
 output "kubernetes_master" {
-  value = "${join(",", aws_instance.controller_etcd.*.private_ip)}"
+  value = "${join(",", aws_instance.controller_etcd.*.public_ip)}"
 }
