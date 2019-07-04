@@ -69,6 +69,13 @@ $ terraform destroy
 
 
 
+#### If you want to see Kubernetes Clustering Step.
+
+```bash
+$ tail -f /home/ubuntu/master.log # in master node
+$ tail -f /home/ubuntu/worker.log # in worker node
+```
+
 ### 3. Set [variables.tf](https://github.com/graykode/aws-kubeadm-terraform/blob/master/variables.tf)
 
 <img src="https://github.com/alicek106/aws-terraform-kubernetes/blob/master/pictures/kube2.png?raw=true" style="width:600px;"/>
