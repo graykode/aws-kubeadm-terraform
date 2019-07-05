@@ -115,8 +115,8 @@ variable number_of_worker{
 If you meet `provider.aws: error validating provider credentials` Error, Please check that your IAM key is activate.
 
 #### ToDo
-- Fixing etcd controller.
-
+- Set up a High Availability etcd cluster with kubeadm
+- Add k8s master node ingress, ingress-controller with ELB
 
 ### Author
 

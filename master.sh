@@ -84,7 +84,7 @@ echo '[Finished] Now you can use kubectl, try : kubectl get nodes' > /home/ubunt
 if [ -f /tmp/fresh-cluster ]; then
   su -c 'kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/13a990bb716c82a118b8e825b78189dcfbfb2f1e/Documentation/kube-flannel.yml' ubuntu
   echo '[Finished] All nodes are ready' > /home/ubuntu/master.log
-  su -c 'kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/static/mandatory.yaml' ubuntu
-  su -c 'kubectl apply -f https://raw.githubusercontent.com/graykode/aws-kubeadm-terraform/master/service-l7.yaml' ubuntu
-  su -c 'kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/static/provider/aws/patch-configmap-l4.yaml' ubuntu
+  # su -c 'kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/static/mandatory.yaml' ubuntu
+  # su -c 'kubectl apply -f https://raw.githubusercontent.com/graykode/aws-kubeadm-terraform/master/service-l7.yaml' ubuntu
+  # su -c 'kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/static/provider/aws/patch-configmap-l4.yaml' ubuntu
 fi
